@@ -368,5 +368,59 @@ void Transposer(int a[r][c])
 	}
     cout<<"The Transpose is: "<<transpose<<endl;
 }
+// Could not understand how to prove the identity :(								
+// Question 9
+ 
+ string Word(string str[r][];) // Here, I am assuming that every element of the matrix is a word.
+ {
+    for(int i=0;i<r;i++)
+    {
+        for(int k=0;k<str[i].length();k++)
+        {
+            for(int x=0;k<str[i].length()-k;x++)
+            {
+                if(int(str[i][k])>int(str[i][x])) // Here, I sorted each word in the 2d array as per ascii using bubble sort.
+                {
+                    char temp=str[i][x];
+                    str[i][x]=str[i][k];
+                    str[i][k]=temp;
+                }
+            }
+        }
+        for(int j=0;j<r-i;j++)
+        {
+            if(str[i].length()>str.[j].length())
+            {
+                swap(str[i],str[j]);// Sorting the list as per length of each word. Applied bubble sort.
+            }
+        }
+    }
+    for
+
+
+ }
 									  
-									  
+// Question 10
+
+int Fibo(int n;) // This function will have to be called from the main program.
+{
+    if(n==0 || n==1)
+    {
+        return n;
+    }
+    else
+    {
+        return Fibo((n-1)+(n-2));
+    }
+}
+
+int main()//Call the function Fibo from here.
+{
+    int n=0;
+    for(int i=0; i<40;i++)
+    {
+        cout<<Fibo(n)<<" ";
+        n++;
+        i++;
+    }    
+}
