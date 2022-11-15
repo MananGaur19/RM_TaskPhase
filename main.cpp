@@ -8,50 +8,70 @@
 #include <vector>
 using namespace std;
 // Question 1
-void BubbleSort()
+void BubbleSort(string str)
 {
-    string input;
-    string list[];
-    cout<< "Enter string: ";
-    getline(cin, input);
-    int len=input.length();
-    for(int i=0;i<=len;i++)
+    for(int i=0;i<=str.length();i++)
     {
-        list[i]=int(input[i]);
-    }
-    for(int i=0;i<=list.size();i++)
-    {
-        for(int j=0;j<sizeof(list)-i;j++)
+        char a=str[i];
+        for(int j=0;j<str.length()-i;j++)
         {
-            if(list[i])>list[j])
+            char b=str[j];
+            if(int(a)>int(b))
             {
-                swap(list[i],list[j]);
+                swap(str[i],str[j]);
             }
         }
     }
 }
 // Question 2
 
-int MatrixMultiplication(int a[][];, int b[][];)// a & b are matrix 1 and 2 respectively.
+int MatrixMultiplication() // a & b are matrix 1 and 2 respectively.
 {
-    int col1=sizeof(a[0])/sizeof(a[0][0]);
-    int col2=sizeof(b[0])/sizeof(b[0][0]);
-    int row1=sizeof(a)/sizeof(a[0]);
-    int row2=sizeof(b)/sizeof(b[0]);
-    int c[row1][col2];
-    if(col1 != row2)
+    int r1;
+    int r2;
+    int c1;
+    int c2;
+    int a[r1][c1];
+    int b[r2][c2];
+    cout<<"Enter number of rows of matrix 1";
+    cin>>r1;
+    cout<<"Enter number of columns of matrix 1";
+    cin>>c1;
+    for(int i=0;i<r1;i++)
+    {
+        for(int j=0;j<c2;j++)
+        {
+            cout<<"Enter element: ";
+            cin>>a[i][j];
+        }
+    }
+    
+    cout<<"Enter number of rows of matrix 2";
+    cin>>r2;
+    cout<<"Enter number of columns of matrix 1";
+    cin>>c2;
+    for(int i=0;i<r2;i++)
+    {
+        for(int j=0;j<c2;j++)
+        {
+            cout<<"Enter element: ";
+            cin>>b[i][j];
+        }
+    };
+    if(c1 != r2)
     {
         cout<<"The given matrices are incompatible"<<endl;;
-        return 1;
+        return 0;
     }
-    for(int i=0;i<row1;i++)// for the row of a
+    int c[c1][r2];
+    for(int i=0;i<r1;i++)// for the row of a
     {
-        for(int j=0;j<col2;j++)// for col of b
+        for(int j=0;j<c2;j++)// for col of b
         {
             c[i][j]=0;
-            for(int k=0;k<row2;k++)// final loop. As i iterates through col of a, j iterates through row of b.
+            for(int k=0;k<r2;k++)// final loop. As i iterates through col of a, j iterates through row of b.
             {//                       k specifies the row number and j specifies the element.
-                c[i][j]+= a[i][k]*b[k][j]
+                c[i][j]+= a[i][k]*b[k][j];
             }
         }
     }
@@ -60,7 +80,7 @@ int MatrixMultiplication(int a[][];, int b[][];)// a & b are matrix 1 and 2 resp
 
 // Question 3
 
-int GottaLoveZero(int a[r][c];)
+int GottaLoveZero(int a[r][c])
 {
     row=sizeof(a)/sizeof(a[0]);
     col=sizeof(a[0])/sizeof(a[0][0]);
@@ -85,7 +105,7 @@ int GottaLoveZero(int a[r][c];)
 
 // Question 4
 
-int MyHill(int a;) // a is the input no.
+int MyHill(int a) // a is the input no.
 {
     string s=to_string(a);
     int sorted[s.length];
@@ -136,7 +156,7 @@ int MyHill(int a;) // a is the input no.
 
 // Question 5
 
-int Numbers(int n;)// a is the input number.
+int Numbers(int n)// a is the input number.
 {
     int menu;
     cout<<"Enter 1,2,3 for hexadecimal, octal and binary respectively: ";
@@ -310,7 +330,7 @@ int SortHaiBhai()
 
 // Question 7
 
-string Pointy(char str[100];)
+string Pointy(char str[100])
 {
     char copy[100];
 	char *strptr, *copyptr;
@@ -330,7 +350,7 @@ string Pointy(char str[100];)
 									  
 // Question 8
 
-int MatrixMultiply(int a[][]; int b[][];)// a & b are matrix 1 and 2 respectively.
+int MatrixMultiply(int a[][], int b[][])// a & b are matrix 1 and 2 respectively.
 {
   int col1=sizeof(a[0])/sizeof(a[0][0]);
   int col2=sizeof(b[0])/sizeof(b[0][0]);
@@ -371,7 +391,7 @@ void Transposer(int a[r][c])
 // Could not understand how to prove the identity :(								
 // Question 9
  
- string Word(string str[r][];) // Here, I am assuming that every element of the matrix is a word.
+ string Word(string str[r][]) // Here, I am assuming that every element of the matrix is a word.
  {
     for(int i=0;i<r;i++)
     {
@@ -402,7 +422,7 @@ void Transposer(int a[r][c])
 									  
 // Question 10
 
-int Fibo(int n;) // This function will have to be called from the main program.
+int Fibo(int n) // This function will have to be called from the main program.
 {
     if(n==0 || n==1)
     {
@@ -423,4 +443,11 @@ int main()//Call the function Fibo from here.
         n++;
         i++;
     }    
+}
+
+// Question 11
+
+int Binary(int arr[n])
+{
+
 }
