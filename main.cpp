@@ -5,7 +5,6 @@
 #include <sstream>
 #include <string>
 #include <string.h>
-#include <vector>
 using namespace std;
 // Question 1
 void BubbleSort(string str)
@@ -39,7 +38,7 @@ int MatrixMultiplication() // a & b are matrix 1 and 2 respectively.
     cin>>c1;
     for(int i=0;i<r1;i++)
     {
-        for(int j=0;j<c2;j++)
+        for(int j=0;j<c1;j++)
         {
             cout<<"Enter element: ";
             cin>>a[i][j];
@@ -57,7 +56,7 @@ int MatrixMultiplication() // a & b are matrix 1 and 2 respectively.
             cout<<"Enter element: ";
             cin>>b[i][j];
         }
-    };
+    }
     if(c1 != r2)
     {
         cout<<"The given matrices are incompatible"<<endl;;
@@ -76,31 +75,45 @@ int MatrixMultiplication() // a & b are matrix 1 and 2 respectively.
         }
     }
     cout <<"Result matrix is: "<<c<<endl;
+    return 0;
 }
 
 // Question 3
 
-int GottaLoveZero(int a[r][c])
+int GottaLoveZero()
 {
-    row=sizeof(a)/sizeof(a[0]);
-    col=sizeof(a[0])/sizeof(a[0][0]);
+    int r,c;
+    int a[r][c];
+    cout<<"Enter no of rows: ";
+    cin>> r;
+    cout<<"Enter no of columns: ";
+    cin>> c;
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            cout<<"Enter element: ";
+            cin>>a[i][j];
+        }
+    }
     for(int i=0;i<r;i++)
     {
         for(int j=0;j<c;j++)// iterate through array.
         {
             if(a[i][j]==0)// find position of zero.
             {
-                for(k=0;k<col;k++)
+                for(int k=0;k<c;k++)
                 {
                     a[i][k]=0;//make the entire column of that element zero.
                 }
-                for(int x=0;x<row;x++)
+                for(int x=0;x<r;x++)
                 {
                     a[x][j]=0;// make the col position element of each row zero.
                 }
             }
         }
     }
+    return 0;
 }
 
 // Question 4
@@ -108,9 +121,10 @@ int GottaLoveZero(int a[r][c])
 int MyHill(int a) // a is the input no.
 {
     string s=to_string(a);
-    int sorted[s.length];
-    int list[s.length];
-    for(int i=0;i<s.length(),i++;)// loop to run the size of string. A string can be interpreted as an array.
+    int len=s.length();
+    int sorted[len];
+    int list[len];
+    for(int i=0;i<len,i++;)// loop to run the size of string. A string can be interpreted as an array.
     {
         list[i]=int(s[i]);// stores each digit of the number as an element in an array.
     }
@@ -122,26 +136,29 @@ int MyHill(int a) // a is the input no.
             return 0;
         }
     }
-    sorted=list;
+    for(int i=0;i<len;i++)
+    {
+        sorted[i]=list[i];
+    }
     for(int i=0;i<sizeof(sorted);i++)
     {
         for(int j=0;j<sizeof(sorted)-i;j++)
         {
             if(int(sorted[i])>int(sorted[j]))
             {
-                swap(sorted[i],sorted[j);
+                swap(sorted[i],sorted[j]);
             }
         }
     }
-    int large=sorted[sorted.length-1];
+    int large=sorted[len-1];
     int pos;
     for(int i=0;i<sizeof(list);i++)
     {
         if(list[i]==large)
         {
-            pos=list[i]
+            pos=list[i];
         }
-        if(list[i]]>large)
+        if(list[i]>large)
         {
             if(i>pos)
             {
@@ -180,13 +197,13 @@ int Numbers(int n)// a is the input number.
             out+=char(store);
             n/=16;
         }
-        int len=sizeof(out)
+        int len=sizeof(out);
         string list[len];
-        for(int i=0;i<len;i++;)// reversing the string to get the answer.
+        for(int i=0;i<len;i++)// reversing the string to get the answer.
         {
             ans[i]=out[len-i];
         }
-        for(int i=0;i<len;i++;)
+        for(int i=0;i<len;i++)
         {
             cout<<ans[i];// printing the answer.
         }
@@ -204,7 +221,7 @@ int Numbers(int n)// a is the input number.
         }
         for(int j=i-1;j>-1;j--)// Printing the answer.
         {
-            cout<<Octal[j]<<;
+            cout<<Octal[j];
         }
         return 0;
     }
@@ -230,10 +247,10 @@ int Numbers(int n)// a is the input number.
 
 int Amicable(int a, int b)// For amicable numbers.
 {
-    int fact1[];// The list containing all the factors of first number (a).
-    int fact2[];// The list containing all the factors of second number (b).
+    int fact1[a/2];// The list containing all the factors of first number (a).
+    int fact2[b/2];// The list containing all the factors of second number (b).
     int j=0;
-    for(i==1;i<a;i++)
+    for(int i=1;i<a;i++)
     {
         if(a%i==0)// Finding all the factors.
         {
@@ -267,7 +284,7 @@ int Amicable(int a, int b)// For amicable numbers.
     }
     else
     {
-        cout<<"Given two numbers are not amicable."
+        cout<<"Given two numbers are not amicable.";
         return 0;
     }
 }
@@ -275,110 +292,154 @@ int Amicable(int a, int b)// For amicable numbers.
 // Question 6
 int SortHaiBhai()
 {
-    char menu;
+    char menu; //why did the menu program not work with "char menu;"?
     cout<<"Enter b or s for bubble sort and selection sort respectively: ";
 	cin>>menu;
 	int len;
 	cout<<"Enter length of array: ";
 	cin>> len;
 	int arr[len];
-    if(menu=="b")// Bubble Sort.
+    int num=int(menu);
+    switch(num)// I have doubts here.
     {
-        for(int i=0;i<len;i++)
+        case 98:// Bubble Sort
         {
-            cout<< "Enter element "<<i+1;
-            cin>>arr[i];
-        }
-        for(int i=0;i<=len;i++)
-        {
-            arr[i]=arr[i];
-        }
-        for(int i=0;i<len;i++)
-        {
-            for(int j=0;j=n-1;j++)
+            for(int i=0;i<len;i++)
             {
-                if(arr[i]>arr[j])
+                cout<< "Enter element "<<i+1;
+                cin>>arr[i];
+            }
+            for(int i=0;i<=len;i++)
+            {
+                arr[i]=arr[i];
+            }
+            for(int i=0;i<len;i++)
+            {
+                for(int j=0;j=len-1;j++)
                 {
-                    swap(arr,arr[j]);
+                    if(arr[i]>arr[j])
+                    {
+                        swap(arr[i],arr[j]);
+                    }
                 }
             }
+            break;
         }
+        case 115:// Selection Sort.
+        {
+            for(int i=0;i<len;i++)
+            {
+            cout<< "Enter element "<<i+1;
+            cin>>arr[i];
+            }
+            int i,j,min;
+            for (i = 0; i < len-1; i++)
+            {
+                min = i;
+                for (j = i+1; j < len; j++)
+                if (arr[j] < arr[min])
+                {
+                    min = j; 
+                }
+
+                if(min!=i)
+                {
+                    swap(arr[min], arr[i]);
+                }
+                                        
+            }
+            break;
+        }
+        
     }
-    if(menu=="s")// Selection Sort.
-	{
-		for(int i=0;i<len;i++)
-		{
-		  cout<< "Enter element "<<i+1;
-		  cin>>arr[i];
-		}
-		int i,j,min;
-		for (i = 0; i < n-1; i++)
-		  {
-			  min = i;
-			  for (j = i+1; j < n; j++)
-			  if (arr[j] < arr[min])
-				  min_idx = j;
-			  if(min_idx!=i)
-			  {
-				  swap(&arr[min_idx], &arr[i]);
-			  }
-									  
-		  }
-	}
+    
 	cout<<"Sorted array: "<< arr;
+    return 0;
 }
 
 // Question 7
 
-string Pointy(char str[100])
+string Pointy(string str, string copy)// I did as per the video shared in group. But some clarification is required.
 {
-    char copy[100];
-	char *strptr, *copyptr;
-	strptr= &str;
-	copyptr= &copy;
-	while(*strptr)
-	{
-	  *copyptr = *strptr;
-	  strptr++;
-	  copyptr++;
-	}
-	*copystr="\0";
-	cout<<"\nEntered String: "<<str;
-	cout<<"\nCopied String: "<<copy<<endl;
-	return 0;
+    string *pStr=&str;
+    copy=*pStr;
+    return copy;
 }
 									  
 // Question 8
 
-int MatrixMultiply(int a[][], int b[][])// a & b are matrix 1 and 2 respectively.
+int MatrixMultiply()// a & b are matrix 1 and 2 respectively.
 {
-  int col1=sizeof(a[0])/sizeof(a[0][0]);
-  int col2=sizeof(b[0])/sizeof(b[0][0]);
-  int row1=sizeof(a)/sizeof(a[0]);
-  int row2=sizeof(b)/sizeof(b[0]);
-  int c[row1][col2];
-  if(col1 != row2)
+    int r1;
+    int r2;
+    int c1;
+    int c2;
+    int a[r1][c1];
+    int b[r2][c2];
+    cout<<"Enter number of rows of matrix 1";
+    cin>>r1;
+    cout<<"Enter number of columns of matrix 1";
+    cin>>c1;
+    for(int i=0;i<r1;i++)
+    {
+        for(int j=0;j<c1;j++)
+        {
+            cout<<"Enter element: ";
+            cin>>a[i][j];
+        }
+    }
+    
+    cout<<"Enter number of rows of matrix 2";
+    cin>>r2;
+    cout<<"Enter number of columns of matrix 1";
+    cin>>c2;
+    for(int i=0;i<r2;i++)
+    {
+        for(int j=0;j<c2;j++)
+        {
+            cout<<"Enter element: ";
+            cin>>b[i][j];
+        }
+    }
+  if(c1 != r2)
   {
 	  cout<<"The given matrices are incompatible"<<endl;;
 	  return 1;
   }
-  for(int i=0;i<row1;i++)// for the row of a
+  int c[c1][r2];
+  for(int i=0;i<r1;i++)// for the row of a
   {
-	  for(int j=0;j<col2;j++)// for col of b
+	  for(int j=0;j<c2;j++)// for col of b
 	  {
 		  c[i][j]=0;
-		  for(int k=0;k<row2;k++)// final loop. As i iterates through col of a, j iterates through row of b.
+		  for(int k=0;k<r2;k++)// final loop. As i iterates through col of a, j iterates through row of b.
 		  {//                       k specifies the row number and j specifies the element.
-			  c[i][j]+= a[i][k]*b[k][j]
+			  c[i][j]+= a[i][k]*b[k][j];
 		  }
 	  }
   }
   cout <<"Result matrix is: "<<c<<endl;
 }
 
-void Transposer(int a[r][c])
+void Transposer()
 {
-	transpose[c][r];
+    int r;
+    int c;
+    int a[r][c];
+    cout<<"Enter number of rows of matrix 1";
+    cin>>r;
+    cout<<"Enter number of columns of matrix 1";
+    cin>>c;
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            cout<<"Enter element: ";
+            cin>>a[i][j];
+        }
+    }
+
+	int transpose[c][r];
 	for(int i=0;i<c;i++)
 	{
 	  for(int j=0;j<r;j++)
@@ -391,17 +452,31 @@ void Transposer(int a[r][c])
 // Could not understand how to prove the identity :(								
 // Question 9
  
- string Word(string str[r][]) // Here, I am assuming that every element of the matrix is a word.
+ string Word() // Here, I am assuming that every element of the matrix is a word.
  {
+    int r,c;
+    string str[r][c];
+    cout<<"Enter no of rows: ";
+    cin>> r;
+    cout<<"Enter no of columns: ";
+    cin>> c;
     for(int i=0;i<r;i++)
     {
-        for(int k=0;k<str[i].length();k++)
+        for(int j=0;j<c;j++)
         {
-            for(int x=0;k<str[i].length()-k;x++)
+            cout<<"Enter word: ";
+            cin>>str[i][j];
+        }
+    }
+    for(int i=0;i<r;i++)
+    {
+        for(int k=0;k<strlen(str[i]);k++)
+        {
+            for(int x=0;k<strlen(str[i])-k;x++)
             {
                 if(int(str[i][k])>int(str[i][x])) // Here, I sorted each word in the 2d array as per ascii using bubble sort.
                 {
-                    char temp=str[i][x];
+                    string temp=str[i][x];
                     str[i][x]=str[i][k];
                     str[i][k]=temp;
                 }
@@ -409,13 +484,12 @@ void Transposer(int a[r][c])
         }
         for(int j=0;j<r-i;j++)
         {
-            if(str[i].length()>str.[j].length())
+            if(strlen(str[i])>strlen(str[j]))
             {
                 swap(str[i],str[j]);// Sorting the list as per length of each word. Applied bubble sort.
             }
         }
     }
-    for
 
 
  }
@@ -447,7 +521,39 @@ int main()//Call the function Fibo from here.
 
 // Question 11
 
-int Binary(int arr[n])
+int Binary(int arr[], int n)
 {
+    
+}
 
+int BinaryExc()// Call the recursive function binary from here.
+{
+    int r,c;
+    int a[r][c];
+    cout<<"Enter no of rows: ";
+    cin>> r;
+    cout<<"Enter no of columns: ";
+    cin>> c;
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            cout<<"Enter element: ";
+            cin>>a[i][j];
+        }
+    }
+
+}
+
+// Question 12
+int fact(int n)
+{
+    if(n==0 || n==1)
+    {
+        return n;
+    }
+    else
+    {
+        return n*fact(n-1);
+    }
 }
