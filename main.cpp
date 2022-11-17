@@ -639,3 +639,14 @@ int sum_rec_exc()// Calling sum_rec from here.
 }
 
 //Question 14
+
+//Question 14
+
+int Euclid(int a, int b)// Two numbers to find the GCD
+{
+    if(a==0)
+    {
+        return b;
+    }
+    return Euclid(b%a,a);// Recursively dividing two numbers until zero is reached.
+}
