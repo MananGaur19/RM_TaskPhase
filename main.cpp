@@ -2,6 +2,7 @@
 // based on my logic but they have not been implemented. i will switch to windows/linux for next task.
 
 #include <iostream>
+#include <cmath>
 #include <sstream>
 #include <string>
 #include <string.h>
@@ -521,15 +522,40 @@ int main()//Call the function Fibo from here.
 
 // Question 11
 
-int Binary(int arr[], int n)
+int Binary(int arr[], int n, int idx)// n is the number to find and idx from which to split the array.
 {
-    
+    if(n=arr[idx])
+    {
+        cout<<"The number "<<n<<" is present in the given array at position: "<<idx<<endl;
+        return 0;
+    }
+    if(n<arr[idx])
+    {
+        int idx=floor(idx/2);
+        Binary(arr[], n, idx);
+    }
+    if(n=arr[idx])
+    {
+        cout<<"The number "<<n<<" is present in the given array at position: "<<idx<<endl;
+        return 0;
+    }
+    if(n>arr[idx])
+    {
+        idx+=floor(idx/2);
+        Binary(arr[],n,idx);
+    }
+    if(idx==0 || idx==sizeof(arr)-1)
+    {
+        cout<<"Given number is not present in the array."
+        return 0;
+    }
 }
 
 int BinaryExc()// Call the recursive function binary from here.
 {
     int r,c;
-    int a[r][c];
+    int arr[r][c];
+    int find;
     cout<<"Enter no of rows: ";
     cin>> r;
     cout<<"Enter no of columns: ";
@@ -539,9 +565,13 @@ int BinaryExc()// Call the recursive function binary from here.
         for(int j=0;j<c;j++)
         {
             cout<<"Enter element: ";
-            cin>>a[i][j];
+            cin>>arr[i][j];
         }
     }
+    cout<<"Enter the number to find: ";
+    cin>>find;
+    int idx=floor(sizeof(array)/2);
+    Binary(find, idx);
 
 }
 
@@ -556,4 +586,54 @@ int fact(int n)
     {
         return n*fact(n-1);
     }
+}
+
+// Question 13
+
+int sum()// Without recursion.
+{
+    string str;
+    cout<<"Enter number: ";
+    cin>>str;
+    int len=str.length;
+    int arr[len];
+    for(int i=0;i<len;i++)// Store each digit of the number as an element of an array.
+    {
+        arr[i]=int(str[i]);
+    }
+    int sum;
+    for(int j=0;j<len;j++)
+    {
+        sum+=arr[j];
+    }
+    cout<<"The sum of digits of the given number is: "<<sum<<endl;
+    return 0;
+}
+
+int sum_rec(int arr[], int sum)// With recursion. Not sure about this one.
+{
+    int i=0; 
+    if(i>sizeof(arr)-1)
+    {
+        return 0;
+    }
+    return sum+sum_rec(arr[],sum);
+        
+        
+    
+}
+
+int sum_rec_exc()// Calling sum_rec from here.
+{
+    string str;
+    cout<<"Enter number: ";
+    cin>>str;
+    len=str.length();
+    int arr[len];
+    for(int i=0;i<len;i++)// Store each digit of the number as an element of an array.
+    {
+        arr[i]=int(str[i]);
+    }
+    int res=sum_rec(arr,0);// Call the recursive function here.
+    cout<<"The sum of digits of given number is: "<<res<<endl;
 }
