@@ -546,7 +546,7 @@ int Binary(int arr[], int n, int idx)// n is the number to find and idx from whi
     }
     if(idx==0 || idx==sizeof(arr)-1)
     {
-        cout<<"Given number is not present in the array."
+        cout<<"Given number is not present in the array.";
         return 0;
     }
 }
@@ -570,7 +570,7 @@ int BinaryExc()// Call the recursive function binary from here.
     }
     cout<<"Enter the number to find: ";
     cin>>find;
-    int idx=floor(sizeof(array)/2);
+    int idx=floor(sizeof(arr)/2);
     Binary(find, idx);
 
 }
@@ -595,7 +595,7 @@ int sum()// Without recursion.
     string str;
     cout<<"Enter number: ";
     cin>>str;
-    int len=str.length;
+    int len=str.length{};
     int arr[len];
     for(int i=0;i<len;i++)// Store each digit of the number as an element of an array.
     {
@@ -628,7 +628,7 @@ int sum_rec_exc()// Calling sum_rec from here.
     string str;
     cout<<"Enter number: ";
     cin>>str;
-    len=str.length();
+    int len=str.length();
     int arr[len];
     for(int i=0;i<len;i++)// Store each digit of the number as an element of an array.
     {
@@ -637,3 +637,5 @@ int sum_rec_exc()// Calling sum_rec from here.
     int res=sum_rec(arr,0);// Call the recursive function here.
     cout<<"The sum of digits of given number is: "<<res<<endl;
 }
+
+//Question 14
