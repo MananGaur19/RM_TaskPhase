@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include <string.h>
+#include <bits/stdc++.h>
 using namespace std;
 // Question 1
 void BubbleSort(string str)
@@ -119,56 +120,44 @@ int GottaLoveZero()
 
 // Question 4
 
-int MyHill(int a) // a is the input no.
+int MyHill_Editted(int n) // a is the input no. I sincerely apologise for the delay.
 {
-    string s=to_string(a);
-    int len=s.length();
-    int sorted[len];
-    int list[len];
-    for(int i=0;i<len,i++;)// loop to run the size of string. A string can be interpreted as an array.
+    string str=to_string(n);
+    int len=str.length();
+    int x=0;
+    int arr[len];
+    while(n>0)
     {
-        list[i]=int(s[i]);// stores each digit of the number as an element in an array.
+        arr[x]=n%10;
+        n/=10;
+        x++;
     }
-    for(int i=0;i<sizeof(list);i++)// iterating through the list.
-    {
-        if(list[i]==list[i+1])
-        {
-            cout<<"Given number is not a Hill Number."<<endl;
-            return 0;
-        }
-    }
+    reverse(arr,arr+len);
+    int large=arr[0];
+    int pos;
     for(int i=0;i<len;i++)
     {
-        sorted[i]=list[i];
+        if(arr[i]==arr[i+1])
+        {
+            cout<<"Given number is NOT a Hill Number";
+            return 0;
+        }
+        if(arr[i]>large)
+        {
+            large=arr[i];
+            pos=i;
+        }
     }
-    for(int i=0;i<sizeof(sorted);i++)
+    for(int i=pos+1;i<len;i++)
     {
-        for(int j=0;j<sizeof(sorted)-i;j++)
+        if(arr[i]>=large)
         {
-            if(int(sorted[i])>int(sorted[j]))
-            {
-                swap(sorted[i],sorted[j]);
-            }
+            cout<<"Given number is NOT a Hill Number.";
+            return 0;
         }
+        
     }
-    int large=sorted[len-1];
-    int pos;
-    for(int i=0;i<sizeof(list);i++)
-    {
-        if(list[i]==large)
-        {
-            pos=list[i];
-        }
-        if(list[i]>large)
-        {
-            if(i>pos)
-            {
-                cout<<"Given number is not a Hill Number"<<endl;
-                return 0;
-            }
-        }
-    }
-    cout<<"Given number is a Hill Number"<<endl;
+    cout<<"Given number is a Hill Number.";
     return 0;
 }
 
