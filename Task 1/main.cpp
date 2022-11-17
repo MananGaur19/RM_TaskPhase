@@ -120,7 +120,7 @@ int GottaLoveZero()
 
 // Question 4
 
-int MyHill_Editted(int n) // a is the input no. I sincerely apologise for the delay.
+int MyHill_Editted(int n) // n is the input no. I sincerely apologise for the delay.
 {
     string str=to_string(n);
     int len=str.length();
